@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Definitions_ozon_order" targetNamespace="http://example.com/ozon-order">
+  <bpmn:process id="Process_ozon_order" name="Обработка заказа клиента на маркетплейсе Ozon" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_order" name="Заказ создан" />
+    <bpmn:task id="Task_confirm" name="Подтвердить заказ" />
+    <bpmn:task id="Task_payment" name="Проверить оплату" />
+    <bpmn:exclusiveGateway id="Gateway_payment" name="Оплата прошла?" />
+    <bpmn:task id="Task_stock" name="Проверить наличие товара" />
+    <bpmn:exclusiveGateway id="Gateway_stock" name="Товар есть?" />
+    <bpmn:subProcess id="SubProcess_prepare" name="Подготовить отправление" />
+    <bpmn:task id="Task_delivery" name="Доставить заказ" />
+    <bpmn:exclusiveGateway id="Gateway_received" name="Заказ получен?" />
+    <bpmn:subProcess id="SubProcess_problem" name="Разобрать проблему доставки" />
+    <bpmn:endEvent id="End_delivered" name="Заказ доставлен" />
+    <bpmn:endEvent id="End_cancelled" name="Заказ отменён" />
+    <bpmn:endEvent id="End_payment_error" name="Заказ не оформлен" />
+    <bpmn:endEvent id="End_support" name="Передано в поддержку" />
+  </bpmn:process>
+</bpmn:definitions>
